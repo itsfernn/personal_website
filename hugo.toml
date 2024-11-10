@@ -1,0 +1,71 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+theme = 'beautifulhugo'
+
+[Params]
+  mainSections = ["publications", "post"]
+  logo = "img/avatar-icon.png" # Expecting square dimensions
+  bigimg = [{src = "/img/background.jpg"}]
+  favicon = "img/favicon.ico"
+  dateFormat = "January 2, 2006"
+  socialShare = true
+  delayDisqus = true
+  showRelatedPosts = true
+
+[Params.author]
+  name = "Lukas Hofbauer"
+  job = "Computer Science Student"
+  bio = "I'm a Computer Science student at the University of Innsbrck. I'm interested in all things tech, especially in the fields of web development, machine learning and computer vision."
+  website = "hofbauer.tech"
+  email = "lukashofbauer@hotmail.com"
+  github = "itsferguson"
+  linkedin = "hofbauer-lukas"
+
+[[Params.author.education]]
+    degree = "BSc Computer Science"
+    university = "University of Innsbruck"
+    year = "2023"
+
+[[Params.author.education]]
+    degree = "MSc Computer Science"
+    university = "University of Innsbruck"
+    year = "ongoing"
+
+[[menu.main]]
+    name = "Blog"
+    url = ""
+    weight = 1
+
+[[menu.main]]
+    name = "About"
+    url = "page/about/"
+    weight = 3
+
+[[menu.main]]
+    identifier = "samples"
+    name = "Samples"
+    weight = 2
+
+[[menu.main]]
+    parent = "samples"
+    name = "Big Image Sample"
+    url = "post/2017-03-07-bigimg-sample"
+    weight = 1
+
+[[menu.main]]
+    parent = "samples"
+    name = "Math Sample"
+    url = "post/2017-03-05-math-sample"
+    weight = 2
+
+[[menu.main]]
+    parent = "samples"
+    name = "Code Sample"
+    url = "post/2016-03-08-code-sample"
+    weight = 3
+
+[[menu.main]]
+    name = "Tags"
+    url = "tags"
+    weight = 3
+
