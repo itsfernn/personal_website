@@ -4,7 +4,7 @@ theme = 'beautifulhugo'
 
 [Params]
   mainSections = ["publications", "post"]
-  logo = "img/avatar-icon.png" # Expecting square dimensions
+  logo = "img/headshot.jpg" # Expecting square dimensions
   bigimg = [{src = "/img/background.jpg"}]
   favicon = "img/favicon.ico"
   dateFormat = "January 2, 2006"
