@@ -19,6 +19,7 @@ theme = 'beautifulhugo'
   website = "hofbauer.tech"
   email = "lukashofbauer@hotmail.com"
   github = "itsferguson"
+  resume = "resume/resume.pdf"
   linkedin = "hofbauer-lukas"
 
 [[Params.author.education]]
