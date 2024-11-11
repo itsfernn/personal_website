@@ -11,6 +11,7 @@ theme = 'beautifulhugo'
   socialShare = true
   delayDisqus = true
   showRelatedPosts = true
+  selfHosted = true
 
 [Params.author]
   name = "Lukas Hofbauer"
