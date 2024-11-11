@@ -1,3 +1,6 @@
 [submodule "themes/beautifulhugo"]
 	path = themes/beautifulhugo
 	url = git@github.com:itsferguson/beautifulhugo.git
+[submodule "static/resume"]
+	path = static/resume
+	url = git@github.com:itsferguson/resume.git
