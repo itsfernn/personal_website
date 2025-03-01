@@ -1,85 +1,82 @@
-+++
-date = '2024-11-10T01:47:38+01:00'
-title = 'Continual Learning in Natural Language Processing'
-subtitle = 'Bachelor Thesis'
-+++
+---
+title: "Continual Learning in NLP: Tackling the Challenge of Catastrophic Forgetting"
+date: 2025-03-01
+author: Lukas Hofbauer
+description: "A deep dive into continual learning for NLP, bridging the gap between Task-Incremental and Domain-Incremental Learning."
+categories: [Machine Learning, NLP, Research]
+cover:
+    image: "/img/bachelor.jpg"
+    responsiveImages: true
 
-Lorem ipsum odor amet, consectetuer adipiscing elit. Diam luctus lectus
-nascetur id, mollis phasellus odio. Erat inceptos gravida ultrices risus class
-lacus ultrices. Nulla consequat nisi mauris ligula praesent eleifend tempus.
-Accumsan aenean vestibulum sit semper mi. Hac fermentum vitae in mollis semper.
-Lacus cras cubilia ridiculus natoque class. Aptent facilisis magna nec lorem
-vehicula sollicitudin vel.
+---
 
-Eros egestas sem mollis ullamcorper imperdiet parturient fermentum mattis.
-Praesent vulputate nulla ridiculus quis; augue sem malesuada. Ligula porttitor
-nostra fames, luctus tristique praesent consequat cursus. Inceptos dui semper
-tincidunt vestibulum primis phasellus dui. Id vulputate porttitor hendrerit
-malesuada neque luctus adipiscing taciti. Porta auctor sem porta mauris
-suspendisse cubilia lacinia urna. Suspendisse tempus fermentum nec conubia
-ipsum amet. Laoreet sagittis fusce penatibus ridiculus elementum vel curae
-tortor. Aptent inceptos hac lectus sed venenatis etiam nostra risus. Justo
-mauris vehicula nec consequat etiam nostra.
+## Introduction
 
-Justo condimentum sollicitudin congue dui aliquam. Per aptent proin dignissim
-morbi suscipit. Eget nisl donec fusce, eros vitae justo amet vehicula.
-Venenatis congue dictumst erat tincidunt tristique aenean. Ipsum vivamus nisl
-rhoncus nisi, erat finibus aliquet ipsum. Vestibulum accumsan praesent facilisi
-diam viverra tellus fames fermentum. Nascetur accumsan gravida pretium iaculis
-fames nostra risus odio montes.
+Machine learning models, particularly in **Natural Language Processing (NLP)**, are becoming increasingly powerful. Yet, they suffer from a critical limitation: **they forget**. When trained on new tasks or domains, models often lose their ability to perform previously learned tasks—a phenomenon known as **catastrophic forgetting**. This problem becomes more pressing as NLP systems are expected to evolve alongside the ever-changing nature of human language.
 
-Tellus consectetur ornare nullam tempor etiam. Odio curabitur quisque dolor
-ipsum nunc accumsan habitasse. Vehicula vehicula dis sapien nullam porttitor ut
-libero laoreet. Massa suspendisse at litora, tincidunt quis arcu. Arcu faucibus
-nisi, aenean aliquam suspendisse fusce. Ad amet parturient ligula euismod
-euismod hendrerit. Fringilla nulla malesuada efficitur class faucibus quam arcu
-pretium. Leo tristique ornare, ultricies tempus vestibulum non ex velit.
+In my recent **bachelor's thesis**, I explored how to mitigate catastrophic forgetting in NLP through **continual learning**. The goal? To enable **lifelong learning models** that can adapt to new information while retaining past knowledge. This post summarizes the key insights and contributions of my research, which formed the basis of my **bachelor thesis**.
 
-Adipiscing mi fringilla sapien consequat class tempor. Habitasse eros himenaeos
-curabitur consequat diam. In taciti platea metus aliquet iaculis egestas
-phasellus hendrerit. Quis ac amet felis lectus habitasse tellus. Non rutrum
-rhoncus ad nulla tempor, habitasse pellentesque quam suscipit. Pharetra magna
-maecenas sem turpis sagittis dictum lacinia. Porta montes quam faucibus congue
-cursus porttitor fermentum? Tempus accumsan natoque imperdiet fringilla per
-blandit fermentum quis. Mauris aptent luctus ridiculus; nostra mauris id
-nostra.
+## The Challenge of Continual Learning
 
-Per scelerisque per sed erat eu. Vivamus nisi convallis orci aliquam turpis.
-Curabitur pellentesque mollis a praesent libero ultrices. Convallis pharetra
-quisque; eros taciti iaculis urna. Iaculis rhoncus consectetur aenean mauris
-montes hac tortor nec. Felis dui tempor fermentum maecenas taciti ultricies
-efficitur nec. Commodo purus egestas risus pellentesque commodo phasellus
-laoreet mattis. Faucibus rutrum posuere a proin ullamcorper ultrices aptent
-accumsan. Vel bibendum bibendum tincidunt amet a imperdiet sapien fames ex.
+Traditional NLP models follow a **pretrain-then-finetune** paradigm:
 
-Mi non sagittis vehicula; tincidunt lacinia tortor eleifend ex scelerisque.
-Dictumst dictum eu porta fringilla massa conubia. Dictumst tortor magnis justo
-blandit ornare iaculis suscipit ultrices. Laoreet rutrum fermentum pharetra non
-interdum tempor. Congue diam egestas molestie mollis himenaeos metus conubia at
-lobortis. Tempor magna placerat consectetur tempor molestie vivamus quam.
-Rhoncus aliquam lobortis vitae velit congue felis netus luctus fermentum.
+1. **Pretraining**: The model learns general language patterns from a massive corpus.
+2. **Finetuning**: The model is adapted to a specific task (e.g., sentiment analysis or summarization).
 
-Vel et tempus maximus hendrerit cubilia potenti nam sit. Curabitur duis ex
-lacus eros ultrices; molestie vel. Metus iaculis nec sapien; auctor natoque
-diam at. Vel libero est aptent tellus aliquet sem ullamcorper consequat. Augue
-ad venenatis sodales mattis, magna tellus. Ullamcorper quisque fermentum id
-aenean neque sodales nam suspendisse. Arcu litora torquent ligula nostra aenean
-orci maecenas mollis. Diam erat imperdiet vehicula mattis laoreet dictum curae.
-Tincidunt libero curabitur sociosqu eros efficitur eget sagittis at. Tincidunt
-turpis ac bibendum sagittis quis dignissim lacus.
+Once fine-tuned, the model is **frozen**—it can no longer update its knowledge without being retrained on the full dataset. This is **inefficient** and **costly**, especially for large-scale transformer models.
 
-Adipiscing nostra malesuada nisl semper feugiat turpis pulvinar consequat. Per
-nascetur gravida ante varius nulla neque; penatibus adipiscing. Inceptos odio
-elit tempus pellentesque mollis dui euismod magnis arcu. Auctor amet
-ullamcorper ad scelerisque consequat netus dignissim ligula quisque. Sapien
-pulvinar rhoncus quisque dolor mus egestas fusce. Vehicula eros aenean volutpat
-vitae tristique. Luctus auctor fermentum pharetra tincidunt, gravida accumsan
-augue. Cursus varius magnis adipiscing sagittis consectetur ut; elementum orci.
+**Continual Learning (CL)** offers an alternative. Instead of retraining from scratch, CL enables models to **learn sequentially** while retaining past knowledge. However, achieving this requires overcoming two major challenges:
 
-Phasellus sit quam phasellus molestie commodo. Pellentesque morbi rutrum eu
-dolor; ultricies tellus a eros. Eu laoreet class volutpat, libero malesuada
-ornare. Feugiat praesent nibh proin fusce phasellus vestibulum senectus
-torquent. Pretium nunc dictumst dignissim pellentesque congue litora elementum
-varius himenaeos. Malesuada purus vestibulum hendrerit congue aptent sapien.
-Etiam elit adipiscing ante curabitur pharetra. Hac netus ad neque curabitur
-venenatis. Dolor placerat erat efficitur tellus porta.
+- **Task-Incremental Learning (TIL)**: How can a model learn new NLP tasks without overwriting previous ones?
+- **Domain-Incremental Learning (DIL)**: How can a model generalize across different domains (e.g., social media vs. news articles) without task labels?
+
+## A New Framework for Continual Learning in NLP
+
+To address these challenges, I developed a **continual learning framework** based on the **T5 model** (Text-to-Text Transfer Transformer). This framework integrates:
+
+### 1. **Adapter-Based Learning for Task-Incremental Learning**
+Instead of updating the entire model, I employed **lightweight adapter modules**—small task-specific components that can be swapped in and out for different tasks. The adapters evaluated include:
+
+- **Bottleneck Adapters** (best-performing method)
+- **Low-Rank Adaptations (LoRA)**
+- **Prefix-Tuning**
+
+By isolating task-specific learning to adapters, the core model remains stable while efficiently learning multiple tasks **without forgetting**.
+
+### 2. **Replay-Based Strategies for Domain-Incremental Learning**
+For domain adaptation, the framework implements **replay-based continual learning**, where past training data is revisited to reinforce memory. Two strategies were tested:
+
+- **Real Sampling**: Storing and replaying actual past training samples.
+- **Pseudo Sampling**: Using the model itself to **generate synthetic samples** from past domains.
+
+Pseudo-rehearsal allows models to retain knowledge **without explicitly storing past data**, which is crucial for privacy and scalability.
+
+## Key Findings
+
+The results of my **bachelor thesis** demonstrate:
+
+- **Bottleneck adapters** achieved the best tradeoff between efficiency and performance.
+- **Generative replay (pseudo-rehearsal)** proved effective in mitigating forgetting, though sample quality remains a challenge.
+- The combination of **adapter-based TIL** and **replay-based DIL** provides a strong foundation for **lifelong NLP models**.
+
+## The Future of Continual NLP
+
+As **large language models (LLMs)** continue to evolve, continual learning will become **essential** to keep them relevant **without excessive retraining costs**. The research in this field is still in its early stages, but the potential impact is enormous.
+
+Imagine an NLP system that **continuously improves** over time, adapting to new dialects, emerging slang, and domain-specific knowledge—all while retaining everything it has learned before.
+
+That is the future of AI.
+
+## Final Thoughts
+
+If you're interested in **continual learning**, you can check out the **code for my framework** here:
+
+👉 **[GitHub Repository](https://git.uibk.ac.at/csaw3632/continual-nlp)**
+
+I’d love to hear your thoughts! Have you encountered catastrophic forgetting in your NLP projects? Let's discuss in the comments or reach out on **[LinkedIn](https://www.linkedin.com/)**.
+
+---
+
+*Thanks for reading! If you found this post insightful, consider sharing it with others in the AI community.* 🚀
+
+

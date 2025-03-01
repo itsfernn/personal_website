@@ -4,3 +4,9 @@
 [submodule "static/resume"]
 	path = static/resume
 	url = git@github.com:itsferguson/resume.git
+[submodule "themes/themes/PaperMod"]
+	path = themes/themes/PaperMod
+	url = https://github.com/adityatelange/hugo-PaperMod.git
+[submodule "themes/PaperMod"]
+	path = themes/PaperMod
+	url = https://github.com/adityatelange/hugo-PaperMod.git

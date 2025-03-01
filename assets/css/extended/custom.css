@@ -1,0 +1,19 @@
+.main .profile {
+  min-height: 50vh;
+}
+
+.main {
+  min-height: 50vh;
+}
+
+.dark {
+    --theme: rgb(0, 0, 0);
+}
+
+body {
+  font-family: "Gowun Dodum",-apple-system,BlinkMacSystemFont,segoe ui,Roboto,Oxygen,Ubuntu,Cantarell,open sans,helvetica neue,sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.6;
+  word-break: break-word;
+}
