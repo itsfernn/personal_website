@@ -83,7 +83,7 @@ params:
       - name: Education
         url: education
       - name: Resume
-        url: resume/resume.pdf
+        url: resume.pdf
 
   homeInfoParams:
     Title: "About Me"
