@@ -13,7 +13,7 @@ buildFuture: false
 buildExpired: false
 enableEmoji: true
 pygmentsUseClasses: true
-mainsections: ["posts", "publications", "projects"]
+mainsections: ["publications", "projects", "posts",]
 
 minify:
   disableXML: true
@@ -29,17 +29,12 @@ languages:
       series: series
     menu:
       main:
-        - name: Archive
-          url: archives
-          weight: 5
         - name: Search
           url: search/
           weight: 10
         - name: Tags
           url: tags/
           weight: 10
-        - name: WiKi
-          url: https://github.com/adityatelange/hugo-PaperMod/wiki/
 
 outputs:
   home:
@@ -71,44 +66,30 @@ params:
 
   profileMode:
     enabled: true
-    title: Lukas Hofbauer
+    title: About Me
     subtitle: 
-      Hi there! I'm Lukas Hofbauer, a cs master student at the University of Innsbruck.
+      Hi there! I'm Lukas, a cs master's student at the University of Innsbruck.
       Striving to become a AI/ML reseracher.  
     imageUrl: "img/headshot.jpg"
     imageTitle: my image
     # imageWidth: 120
     # imageHeight: 120
     buttons:
-      - name: Education
-        url: education
+      - name: Contact Me
+        url: contact
       - name: Resume
         url: resume.pdf
 
-  homeInfoParams:
-    Title: "About Me"
-    Content: >
-      Hi there! I'm Lukas Hofbauer, a cs master student at the University of Innsbruck.
-      Striving to become a AI/ML reseracher.  
-
   socialIcons:
     - name: github
-      title: View Source on Github
-      url: "https://github.com/adityatelange/hugo-PaperMod"
-    - name: Discord
-      title: Join discord community
-      url: "https://discord.gg/ahpmTvhVmp"
+      title: My Github Repo
+      url: "https://github.com/itsferguson"
     - name: X
       title: Share PaperMod on X/Twitter
-      url: "https://x.com/intent/tweet/?text=Checkout%20Hugo%20PaperMod%20%E2%9C%A8%0AA%20fast,%20clean,%20responsive%20Hugo%20theme.&url=https://github.com/adityatelange/hugo-PaperMod&hashtags=Hugo,PaperMod"
-    - name: KoFi
-      title: Buy me a Ko-Fi :)
-      url: "https://ko-fi.com/adityatelange"
-
-  editPost:
-    URL: "https://github.com/adityatelange/hugo-PaperMod/tree/exampleSite/content"
-    Text: "Suggest Changes" # edit text
-    appendFilePath: true # to append file path to Edit link
+      url: "https://x.com/its_fernnn"
+    - name: LinkedIn
+      title: Share PaperMod on X/Twitter
+      url: "https://www.linkedin.com/in/hofbauer-lukas/"
 
   # label:
   # iconSVG: '<svg xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 -960 960 960" fill="currentColor"><path d="M320-240h320v-80H320v80Zm0-160h320v-80H320v80ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z"/></svg>'
