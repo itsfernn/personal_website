@@ -1,19 +1,26 @@
 .main .profile {
-  min-height: 50vh;
+  min-height: 30vh;
 }
 
 .main {
-  min-height: 50vh;
+  min-height: 30vh;
 }
 
 .dark {
-    --theme: rgb(0, 0, 0);
+    --theme: rgb(8, 9, 13);
+    --entry: rgb(18, 20, 26);
+    --border: rgb(18, 20, 26);
+    --tertiary: rgb(42, 48, 62);
+}
+
+:root {
+  --tertiary: rgb(230, 228, 222);
 }
 
 body {
   font-family: "Gowun Dodum",-apple-system,BlinkMacSystemFont,segoe ui,Roboto,Oxygen,Ubuntu,Cantarell,open sans,helvetica neue,sans-serif;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.6;
   word-break: break-word;
 }
