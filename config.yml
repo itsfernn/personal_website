@@ -49,11 +49,11 @@ params:
 
   defaultTheme: auto
   # disableThemeToggle: true
-  ShowShareButtons: true
+  ShowShareButtons: false
   ShowReadingTime: true
   # disableSpecial1stPost: true
   displayFullLangName: true
-  ShowPostNavLinks: true
+  ShowPostNavLinks: false
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: true
   ShowRssButtonInSectionTermList: true
@@ -78,14 +78,17 @@ params:
 
   socialIcons:
     - name: github
-      title: My Github Repo
+      title: Take a look at my GitHub
       url: "https://github.com/itsferguson"
-    - name: X
-      title: Share PaperMod on X/Twitter
+    - name: twitter
+      title: Follow me on Twitter
       url: "https://x.com/its_fernnn"
     - name: LinkedIn
-      title: Share PaperMod on X/Twitter
+      title: Connect with me on LinkedIn
       url: "https://www.linkedin.com/in/hofbauer-lukas/"
+    - name: email
+      title: Send me an email 
+      url: "mailto:lukas.hofbauer@student.uibk.ac.at"
 
 
 markup:
