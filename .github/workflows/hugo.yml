@@ -46,7 +46,7 @@ jobs:
       - name: Fetch latest resume PDF
         run: |
           git clone https://x-access-token:${{ secrets.GH_PAT }}@github.com/itsferguson/resume.git temp_resume
-          cp temp_resume/resume.pdf static/resume.pdf
+          cp temp_resume/Lukas_Hofbauer_CV.pdf static/resume.pdf
           rm -rf temp_resume
       - name: Setup Pages
         id: pages
