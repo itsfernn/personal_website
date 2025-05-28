@@ -13,8 +13,8 @@ buildFuture: false
 buildExpired: false
 enableEmoji: true
 pygmentsUseClasses: true
-mainsections: ["publications", "projects", "posts",]
-
+mainsections: ["publications", "projects", "posts"]
+math: true
 minify:
   disableXML: true
   # minifyOutput: true
@@ -64,9 +64,9 @@ params:
   profileMode:
     enabled: true
     title: About Me
-    subtitle: 
+    subtitle:
       Hi there! I'm Lukas, a cs master's student at the University of Innsbruck.
-      Striving to become a AI/ML reseracher.  
+      Striving to become a AI/ML reseracher.
     imageUrl: "img/headshot.jpg"
     # imageWidth: 120
     # imageHeight: 120
@@ -87,9 +87,8 @@ params:
       title: Connect with me on LinkedIn
       url: "https://www.linkedin.com/in/hofbauer-lukas/"
     - name: email
-      title: Send me an email 
+      title: Send me an email
       url: "mailto:lukas.hofbauer@student.uibk.ac.at"
-
 
 markup:
   goldmark:
