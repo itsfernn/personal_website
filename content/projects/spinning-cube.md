@@ -2,6 +2,7 @@
 title: "Spinning Cube: A Pure C Experiment in Graphics and Algorithms"
 date: 2025-03-01
 author: Lukas Hofbauer
+github: "https://github.com/itsfernn/spinning-cube"
 description: "Exploring low-level programming by building a 3D spinning cube from scratch in C."
 categories: [Programming, C, Algorithms]
 cover:
@@ -56,6 +57,3 @@ This project is a small yet challenging exercise in **computer graphics and comp
 If you're interested in **low-level graphics programming** or just want to see how a **spinning cube** works in pure C, check out the GitHub repo:
 
 👉 **[GitHub Repository](https://github.com/itsferguson/spinning-cube)**
-
-
-
