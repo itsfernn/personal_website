@@ -2,7 +2,6 @@
 # contain http (as opposeed to https) URLs. This would affect Google indexing of your URLs.
 baseURL: "https://hofbauer.tech/"
 title: Lukas Hofbauer
-copyright: "© [PaperMod Contributors](https://github.com/adityatelange/hugo-PaperMod/graphs/contributors)"
 theme: [PaperMod]
 
 enableInlineShortcodes: true
@@ -28,12 +27,21 @@ languages:
       series: series
     menu:
       main:
+        - name: ML Challenge
+          url: ml-challenge/
+          weigth: 1
+        - name: Projects
+          url: projects/
+          weigth: 2
+        - name: Publications
+          url: publications/
+          weigth: 3
         - name: Search
           url: search/
           weight: 10
         - name: Tags
           url: tags/
-          weight: 10
+          weight: 11
 
 outputs:
   home:
