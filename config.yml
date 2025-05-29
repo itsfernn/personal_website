@@ -3,7 +3,6 @@
 baseURL: "https://hofbauer.tech/"
 title: Lukas Hofbauer
 copyright: "© [PaperMod Contributors](https://github.com/adityatelange/hugo-PaperMod/graphs/contributors)"
-paginate: 5
 theme: [PaperMod]
 
 enableInlineShortcodes: true
@@ -44,11 +43,10 @@ outputs:
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
-  description: "Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod"
   author: Lukas Hofbauer
 
-  defaultTheme: auto
-  # disableThemeToggle: true
+  defaultTheme: light
+  disableThemeToggle: true
   ShowShareButtons: false
   ShowReadingTime: true
   # disableSpecial1stPost: true
@@ -100,7 +98,7 @@ markup:
     # codeFences: true
     # guessSyntax: true
     # lineNos: true
-    # style: monokai
+    style: rose-pine-dawn
 
 services:
   instagram:
