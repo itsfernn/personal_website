@@ -4,13 +4,14 @@ draft: false
 title: 'Linear Regression'
 github: 'https://github.com/itsfernn/ml-daily-challenge/tree/main/linear-regression'
 cover:
-    image: "output_12_0.png"
+    image: "cover.png"
     alt:  "Linear Regression Results"
 ---
-
 Linear regression is a fundamental supervised learning algorithm used to model the relationship between a dependent variable $y$ and one or more independent variables $x$. In its simplest form (univariate linear regression), it assumes that the relationship between $x$ and $y$ is linear and can be described by the equation:
 
 $$ \hat y = k \cdot x + d $$
+
+But we can have arbitrarly many input features, as long as they are a linar combination in the form:
 $$ \hat y = w_0 + w_1 x_1 + w_2 x_2 … w_n x_n$$
 
 
@@ -27,7 +28,6 @@ k = 3
 d = 4
 
 x = 2 * np.random.rand(num_points,1)
-
 noise = np.random.normal(scale=0.8, size=x.shape)
 y = d + k * x + noise
 ```
@@ -48,12 +48,15 @@ plt.show()
 
 
 
-![png](output_3_0.png)
+![png](figure1.png)
 
 
 
-The model is trained by minimizing the mean squared error (MSE) between the predicted values and the actual targets:
+Even with the ideal parameters, the model doesn't perfectly fit the data due to the added Gaussian noise.
 
+## Mean Squared Error
+
+The model's performance is commonly evaluated using Mean Squared Error (MSE):
 $$MSE=\frac 1 n \sum_{i=1}^n (y_i−\hat y_i)^2$$
 
 
@@ -66,64 +69,58 @@ y_ideal = d + k * x
 print("Mean Squared Error: ", mean_squared_error(y, y_ideal))
 ```
 
-    Mean Squared Error:  0.7505923385036507
+    Mean Squared Error:  0.6149312404134968
 
 
-Notice that even for the Ideal soltion we have some error, that is because your model will never be able to perfectly reconstruct the data, since we have introduced some gaussian noise.
+Even the ideal model incurs some error due to noise.
 
-Normally the values used to create the data are not avaliable. However luckily a closed form solution to find them exists exists. For this we first rewrite the formula a bit:
+---
 
-$$ \hat y = w_0 + w_1 x_1 + w_2 x_2 … w_n x_n$$
-$$ \mathbf{\hat Y} = \mathbf{Xw}$$
+### Closed-Form Solution (Normal Equation)
 
-
-* $\mathbf{X}$ is an $n \times (d+1)$ matrix, where each row corresponds to a sample, the first column consists of ones (to account for the intercept term $w_0$), and the remaining columns contain the feature values.
-* $\mathbf{\hat Y}$ is an $n \times 1$ vector of the estimated target values.
-* $\mathbf{w}$ is a $(d+1) \times 1$ vector of model parameters, including the intercept ($w_0$).
-
-Mean Squared Error expressed as a Loss function with $w$ as a parameter then becomes:
-
-$$J(\mathbf{w}) = \|\mathbf{y} - \mathbf{X} \mathbf{w}\|^2$$
-$$= (\mathbf{y} - \mathbf{X} \mathbf{w})^T (\mathbf{y} - \mathbf{X} \mathbf{w})
-$$
-
-To minimize this quadratic function, we take the derivative with respect to $\mathbf{w}$ and set it to zero:
+In practice, the true parameters $k$ and $d$ are unknown. Fortunately, there exists a closed-form solution using linear algebra. First, we express the model as:
 
 $$
-\frac{\partial J}{\partial \mathbf{w}} = -2 \mathbf{X}^T (\mathbf{y} - \mathbf{X} \mathbf{w}) = 0
+\hat{\mathbf{Y}} = \mathbf{X} \mathbf{w}
 $$
 
-Rearranging gives the normal equation:
+Where:
+
+* $\mathbf{X}$ is an $n \times (d+1)$ matrix with a column of ones for the intercept term.
+* $\mathbf{w}$ is a vector of model parameters.
+* $\hat{\mathbf{Y}}$ is the vector of predictions.
+
+The loss function becomes:
 
 $$
-\mathbf{X}^T \mathbf{X} \mathbf{w} = \mathbf{X}^T \mathbf{y}
+J(\mathbf{w}) = \|\mathbf{y} - \mathbf{Xw}\|^2
 $$
 
-Provided $\mathbf{X}^T \mathbf{X}$ is invertible, the solution for $\mathbf{w}$ is:
+Setting the gradient to zero and solving yields the **normal equation**:
 
 $$
-\boxed{
 \mathbf{w} = (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y}
-}
 $$
 
 
 ```python
+# adding column of ones to X
 ones = np.ones((x.shape[0], 1))
 X = np.hstack((ones, x))
 ```
 
 
 ```python
-w = np.linalg.inv(np.matmul(X.T, X)).dot(X.T).dot(y)
-Y_hat = X.dot(w)
+# calculating ideal w and predicting y values
+w = np.linalg.inv(X.T @ X) @ X.T @ y
+Y_hat = X @ w
 mean_squared_error(y, Y_hat)
 ```
 
 
 
 
-    np.float64(0.7227020864943214)
+    np.float64(3.457589455007784)
 
 
 
@@ -137,9 +134,13 @@ plt.show()
 
 
 
-![png](output_9_0.png)
+![png](figure2.png)
 
 
+
+## Applying Linear Regression to Real Data
+
+Let’s now apply linear regression to a real-world dataset: **California Housing**, using `sklearn.linear_model.LinearRegression`.
 
 
 ```python
@@ -147,9 +148,190 @@ from sklearn.datasets import fetch_california_housing
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
-# 1. Load dataset
 data = fetch_california_housing(as_frame=True)
+df = data.frame
+df
+```
 
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MedInc</th>
+      <th>HouseAge</th>
+      <th>AveRooms</th>
+      <th>AveBedrms</th>
+      <th>Population</th>
+      <th>AveOccup</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>MedHouseVal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>8.3252</td>
+      <td>41.0</td>
+      <td>6.984127</td>
+      <td>1.023810</td>
+      <td>322.0</td>
+      <td>2.555556</td>
+      <td>37.88</td>
+      <td>-122.23</td>
+      <td>4.526</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>8.3014</td>
+      <td>21.0</td>
+      <td>6.238137</td>
+      <td>0.971880</td>
+      <td>2401.0</td>
+      <td>2.109842</td>
+      <td>37.86</td>
+      <td>-122.22</td>
+      <td>3.585</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7.2574</td>
+      <td>52.0</td>
+      <td>8.288136</td>
+      <td>1.073446</td>
+      <td>496.0</td>
+      <td>2.802260</td>
+      <td>37.85</td>
+      <td>-122.24</td>
+      <td>3.521</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5.6431</td>
+      <td>52.0</td>
+      <td>5.817352</td>
+      <td>1.073059</td>
+      <td>558.0</td>
+      <td>2.547945</td>
+      <td>37.85</td>
+      <td>-122.25</td>
+      <td>3.413</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3.8462</td>
+      <td>52.0</td>
+      <td>6.281853</td>
+      <td>1.081081</td>
+      <td>565.0</td>
+      <td>2.181467</td>
+      <td>37.85</td>
+      <td>-122.25</td>
+      <td>3.422</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>20635</th>
+      <td>1.5603</td>
+      <td>25.0</td>
+      <td>5.045455</td>
+      <td>1.133333</td>
+      <td>845.0</td>
+      <td>2.560606</td>
+      <td>39.48</td>
+      <td>-121.09</td>
+      <td>0.781</td>
+    </tr>
+    <tr>
+      <th>20636</th>
+      <td>2.5568</td>
+      <td>18.0</td>
+      <td>6.114035</td>
+      <td>1.315789</td>
+      <td>356.0</td>
+      <td>3.122807</td>
+      <td>39.49</td>
+      <td>-121.21</td>
+      <td>0.771</td>
+    </tr>
+    <tr>
+      <th>20637</th>
+      <td>1.7000</td>
+      <td>17.0</td>
+      <td>5.205543</td>
+      <td>1.120092</td>
+      <td>1007.0</td>
+      <td>2.325635</td>
+      <td>39.43</td>
+      <td>-121.22</td>
+      <td>0.923</td>
+    </tr>
+    <tr>
+      <th>20638</th>
+      <td>1.8672</td>
+      <td>18.0</td>
+      <td>5.329513</td>
+      <td>1.171920</td>
+      <td>741.0</td>
+      <td>2.123209</td>
+      <td>39.43</td>
+      <td>-121.32</td>
+      <td>0.847</td>
+    </tr>
+    <tr>
+      <th>20639</th>
+      <td>2.3886</td>
+      <td>16.0</td>
+      <td>5.254717</td>
+      <td>1.162264</td>
+      <td>1387.0</td>
+      <td>2.616981</td>
+      <td>39.37</td>
+      <td>-121.24</td>
+      <td>0.894</td>
+    </tr>
+  </tbody>
+</table>
+<p>20640 rows × 9 columns</p>
+</div>
+
+
+
+This dataset contains multiple features to predict `MedHouseVal` (median house value), making the model more complex but also harder to visualize.
+
+### Train/Test Split and Model Training
+
+
+
+```python
 X = data.data
 y = data.target
 
@@ -166,6 +348,15 @@ print("Mean Squared Error:", mse)
 
     Mean Squared Error: 0.5558915986952444
 
+
+## Visualizing Predictions
+
+To visualize the model’s predictions geographically, we’ll plot latitude and longitude, coloring by `MedHouseVal`.
+
+
+```python
+y_hat = model.predict(X)
+```
 
 
 ```python
@@ -187,13 +378,8 @@ ax2.set_title("Predicted Median House Values")
 plt.show()
 ```
 
-
-
-![png](output_12_0.png)
-
+![png](cover.png)
 
 
 
-```python
-
-```
+The model captures the overall trend but struggles with high-value regions, indicating that a linear model may not be expressive enough for all nuances in the data. We'll explore more powerful models in future challenges.
