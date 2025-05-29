@@ -15,6 +15,8 @@
 
 :root {
     --tertiary: rgb(230, 228, 222);
+    --code-block-bg: unset !important;
+    --code-bg: unset !important;
 }
 
 body {
@@ -34,6 +36,14 @@ body {
     font-size: 20px;
     line-height: 1.6;
     word-break: break-word;
+}
+
+.chroma {
+    border-radius: 8px;
+}
+
+.post-content pre code {
+    color: var(--secondary);
 }
 
 .post-content img {
