@@ -73,7 +73,7 @@ params:
     title: About Me
     subtitle:
       Hi there! I'm Lukas, a cs master's student at the University of Innsbruck.
-      Striving to become a AI/ML reseracher.
+      Striving to become a AI/ML researcher.
     imageUrl: "img/headshot.jpg"
     # imageWidth: 120
     # imageHeight: 120
