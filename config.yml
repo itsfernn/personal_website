@@ -53,7 +53,7 @@ params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   author: Lukas Hofbauer
 
-  defaultTheme: light
+  defaultTheme: auto
   disableThemeToggle: true
   ShowShareButtons: true
   ShareButtons: ["linkedin", "twitter"]
