@@ -11,7 +11,7 @@ buildFuture: false
 buildExpired: false
 enableEmoji: true
 pygmentsUseClasses: true
-mainsections: ["publications", "projects", "posts"]
+mainsections: ["publications", "ml-challenge", "projects", "posts"]
 math: true
 minify:
   disableXML: true
@@ -60,7 +60,7 @@ params:
   ShowReadingTime: true
   # disableSpecial1stPost: true
   displayFullLangName: true
-  ShowPostNavLinks: false
+  ShowPostNavLinks: true
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: true
   ShowRssButtonInSectionTermList: true
