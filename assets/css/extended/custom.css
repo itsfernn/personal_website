@@ -4,20 +4,41 @@
 
 .main {
     min-height: 30vh;
+    border-radius: var(--radius);
 }
 
 .dark {
-    --theme: rgb(8, 9, 13);
-    --entry: rgb(18, 20, 26);
-    --border: rgb(18, 20, 26);
-    --tertiary: rgb(42, 48, 62);
+    --theme: rgb(20, 20, 26);
+    --entry: rgb(28, 28, 40);
+    --border: rgba(0, 0, 0, 0);
+    --tertiary: rgb(34, 34, 49);
+    --code-block-bg: rgb(33, 32, 47);
+    --code-bg: var(--code-block-bg);
+    background: var(--theme);
 }
 
 :root {
-    --tertiary: rgb(230, 228, 222);
-    --code-block-bg: unset !important;
-    --code-bg: unset !important;
+    --tertiary: rgb(251, 249, 246);
+    --theme: rgb(253, 252, 250);
     --main-width: 900px;
+    --code-block-bg: var(--tertiary);
+    --code-bg: var(--tertiary);
+    background: var(--theme);
+}
+
+.list {
+    background: var(--theme);
+}
+
+.post-single {
+    background: white;
+    border-radius: var(--radius);
+    padding: 1px 20px;
+}
+.dark .post-single {
+    background: var(--entry);
+    border-radius: var(--radius);
+    padding: 1px 20px;
 }
 
 body {
