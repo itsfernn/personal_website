@@ -17,6 +17,7 @@
     --tertiary: rgb(230, 228, 222);
     --code-block-bg: unset !important;
     --code-bg: unset !important;
+    --main-width: 900px;
 }
 
 body {
@@ -52,4 +53,10 @@ body {
 
 .github-link {
     margin-left: auto;
+}
+
+.entry-cover img {
+    max-height: 350px;
+    object-fit: cover;
+    object-position: top;
 }
