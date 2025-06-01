@@ -102,9 +102,10 @@ markup:
     renderer:
       unsafe: true
   highlight:
+    guessSyntax: true
     noClasses: false
     # anchorLineNos: true
-    # codeFences: true
+    codeFences: true
     # guessSyntax: true
     # lineNos: true
     style: rose-pine-dawn
