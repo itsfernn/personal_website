@@ -4,7 +4,6 @@
 
 .main {
     min-height: 30vh;
-    border-radius: var(--radius);
 }
 
 .dark {
@@ -18,27 +17,16 @@
 }
 
 :root {
+    background: unset;
     --tertiary: rgb(251, 249, 246);
     --theme: rgb(253, 252, 250);
     --main-width: 900px;
     --code-block-bg: var(--tertiary);
     --code-bg: var(--tertiary);
-    background: var(--theme);
 }
 
 .list {
     background: var(--theme);
-}
-
-.post-single {
-    background: white;
-    border-radius: var(--radius);
-    padding: 1px 20px;
-}
-.dark .post-single {
-    background: var(--entry);
-    border-radius: var(--radius);
-    padding: 1px 20px;
 }
 
 body {
