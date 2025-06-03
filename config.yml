@@ -36,7 +36,6 @@ languages:
         - name: Publications
           url: publications/
           weigth: 3
-        - name: Search
           url: search/
           weight: 10
         - name: Tags
