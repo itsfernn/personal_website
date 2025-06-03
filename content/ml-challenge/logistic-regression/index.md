@@ -9,7 +9,7 @@ cover:
 
 Regression methods aren’t just for predicting continuous values—they can also be used for classification. The simplest example of this is **Logistic Regression**, where we train a linear model to separate two classes in feature space. The goal is for the model to output `1` if an input belongs to our target class and `0` otherwise.
 
-The formula for logistic regression should look familiar if you’ve seen the post on Linear Regression:
+The formula for logistic regression should look familiar if you’ve seen the post on [Linear Regression](linear-regression):
 
 $$
 \hat{p} = \sigma(\theta^T \cdot x)
@@ -35,7 +35,7 @@ To train a logistic regression model, we want it to output **high probabilities*
 $$
 c(\theta) =
 \begin{cases}
-    -\log(\hat{p}) & \text{if } y = 1 \\ 
+    -\log(\hat{p}) & \text{if } y = 1 \newline
     -\log(1 - \hat{p}) & \text{if } y = 0
 \end{cases}
 $$
@@ -46,7 +46,7 @@ $$
 c(\theta) = - \left( y \cdot \log(\hat{p}) + (1 - y) \cdot \log(1 - \hat{p}) \right)
 $$
 
-Unfortunately, there’s no closed-form solution for this cost function. However, the good news is that it’s **convex**, which means we can use **gradient descent** to find the global minimum.
+Unfortunately, there’s no closed-form solution for this cost function. However, the good news is that it’s **convex**, which means we can use [**gradient descent**](gradient-descent) to find the global minimum.
 
 The gradient of the cost function with respect to each parameter $\theta_j$ is:
 
