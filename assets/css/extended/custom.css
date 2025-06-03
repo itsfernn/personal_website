@@ -1,6 +1,9 @@
 .main .profile {
     min-height: 30vh;
 }
+.katex {
+  font-size: 1em  !important;
+}
 
 .main {
     min-height: 30vh;
