@@ -21,7 +21,7 @@ Here, $s_k(x)$ is the score for class $k$, and $\theta_k$ is the parameter vecto
 To turn these scores into probabilities that sum to one, we apply the **softmax function**:
 
 $$
-\hat{p}_k = \sigma(x)_k = \frac{\exp(s_k(x))}{\sum_{j=1}^K \exp(s_j(x))}
+\hat{p}_k = \sigma (x)_k = \frac{\exp(s_k(x))}{\sum^{K}_j \exp(s_j(x))}
 $$
 
 This gives us a vector of probabilities over all $K$ classes. The predicted class is simply the one with the highest probability:
