@@ -4,7 +4,7 @@ date: 2025-08-23T13:03:08+07:00
 author: "Lukas Hofbauer"
 github: "https://github.com/itsfernn/ml-daily-challenge/blob/main/lora/lora.ipynb"
 cover:
-    image: "lora.png"
+    image: "cover.png"
 ---
 # LoRA (Low-Rank Adaptation)
 
